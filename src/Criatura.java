@@ -44,7 +44,7 @@ public abstract class Criatura {
     }
 
     public void setSalud(int salud) {
-        this.salud = salud;
+        this.salud = Math.max(0, salud);
     }
 
     public int getFuerza() {
@@ -53,6 +53,10 @@ public abstract class Criatura {
 
     public void setFuerza(int fuerza) {
         this.fuerza = fuerza;
+    }
+
+    public void imprimirSalud(){
+        System.out.println("Salud de " + nombre + ": " + salud);
     }
 
 }

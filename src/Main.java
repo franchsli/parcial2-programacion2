@@ -1,34 +1,45 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
+
+    public static void simularBatalla(Criatura c1, Criatura c2) {
+        System.out.println("=== " + c1.getNombre() + " vs " + c2.getNombre() + " ===");
+        int ronda = 1;
+
+        while (c1.estaViva() && c2.estaViva()) {
+            System.out.println("\n--- Ronda " + ronda++ + " ---");
+
+            c1.atacar(c2);
+            c2.imprimirSalud();
+
+            if (!c2.estaViva()) break;
+
+            c2.atacar(c1);
+            c1.imprimirSalud();
+
+        }
+
+        Criatura ganador = c1.estaViva() ? c1 : c2;
+        System.out.println("\n>>> Ganador: " + ganador.getNombre() + " <<<\n");
+        System.out.println("El ganador triunfó con " + ganador.getSalud() + " puntos de salud");
+    }
+
     public static void main(String[] args) {
-        List<Criatura> criaturas = new ArrayList<>();
+        // Se usan nuevos objetos en cada ronda
+        // para que las simulaciones no tengan peleadores desgastados.
+
+        // Batalla 1
+        simularBatalla(
+            new Dragon("Ignis", 120, 30, "Escamas de Obsidiana"),
+            new Mago("Gandalf", 80, 20, "Rayo de Luz"));
+
+        // Batalla 2
         Arma espada = new Arma("Espada Bastarda", 15);
-        
-        criaturas.add(new Dragon("Ignis", 120, 30, "Escamas de Obsidiana"));
-        criaturas.add(new Guerrero("Thorin", 100, 25, espada));
-        criaturas.add(new Mago("Gandalf", 80, 20, "Rayo de Luz"));
+        simularBatalla(
+            new Guerrero("Thorin", 100, 25, espada),
+            new Dragon("Ignis", 120, 30, "Escamas de Obsidiana"));
 
-        System.out.println("--- ESTADO INICIAL ---");
-        for (Criatura c : criaturas) {
-            System.out.println(c.getNombre() + " - Salud: " + c.getSalud() + " - Fuerza: " + c.getFuerza());
-        }
-
-        System.out.println("\n--- COMBATE ---");
-        Criatura atacante = criaturas.get(0);
-        Criatura objetivo1 = criaturas.get(1);
-        Criatura objetivo2 = criaturas.get(2);
-
-        atacante.atacar(objetivo1);
-
-        if (atacante instanceof Dragon) {
-            ((Dragon) atacante).habilidadEspecial(objetivo2);
-        }
-
-        System.out.println("\n--- ESTADO FINAL ---");
-        for (Criatura c : criaturas) {
-            System.out.println(c.getNombre() + " - Salud restante: " + c.getSalud());
-        }
+        // Batalla 3
+        simularBatalla(
+            new Mago("Gandalf", 80, 20, "Rayo de Luz"),
+            new Guerrero("Thorin", 100, 25, espada));
     }
 }
