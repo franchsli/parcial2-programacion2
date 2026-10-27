@@ -21,13 +21,23 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        Criatura dragon = new Dragon("Ignis", 120, 30, "Escamas de Obsidiana");
-        Criatura mago = new Mago("Gandalf", 80, 20, "Rayo de Luz");
-        Arma espada = new Arma("Espada Bastarda", 15);
-        Criatura guerrero = new Guerrero("Thorin", 100, 25, espada);
+        // Se usan nuevos objetos en cada ronda
+        // para que las simulaciones no tengan peleadores desgastados.
 
-        simularBatalla(dragon, mago);
-        simularBatalla(guerrero, dragon);
-        simularBatalla(mago, guerrero);
+        // Batalla 1
+        simularBatalla(
+            new Dragon("Ignis", 120, 30, "Escamas de Obsidiana"),
+            new Mago("Gandalf", 80, 20, "Rayo de Luz"));
+
+        // Batalla 2
+        Arma espada = new Arma("Espada Bastarda", 15);
+        simularBatalla(
+            new Guerrero("Thorin", 100, 25, espada),
+            new Dragon("Ignis", 120, 30, "Escamas de Obsidiana"));
+
+        // Batalla 3
+        simularBatalla(
+            new Mago("Gandalf", 80, 20, "Rayo de Luz"),
+            new Guerrero("Thorin", 100, 25, espada));
     }
 }
