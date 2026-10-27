@@ -1,7 +1,9 @@
 public abstract class Criatura {
-    private String nombre;
-    private int salud;
-    private int fuerza;
+    // protected ya que las clases hijas
+    // deberían tener acceso a ellos
+    protected String nombre;
+    protected int salud;
+    protected int fuerza;
     
     public Criatura(String nombre, int salud, int fuerza) {
         this.nombre = nombre;
@@ -30,7 +32,6 @@ public abstract class Criatura {
     public boolean estaViva(){
         return salud > 0;
     }
-
 
 
 }
