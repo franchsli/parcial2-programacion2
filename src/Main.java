@@ -18,6 +18,7 @@ public class Main {
 
         Criatura ganador = c1.estaViva() ? c1 : c2;
         System.out.println("\n>>> Ganador: " + ganador.getNombre() + " <<<\n");
+        System.out.println("El ganador triunfó con " + ganador.getSalud() + " puntos de salud");
     }
 
     public static void main(String[] args) {
