@@ -8,12 +8,13 @@ public class Main {
             System.out.println("\n--- Ronda " + ronda++ + " ---");
 
             c1.atacar(c2);
+            c2.imprimirSalud();
+
             if (!c2.estaViva()) break;
 
             c2.atacar(c1);
+            c1.imprimirSalud();
 
-            System.out.println("Salud -> " + c1.getNombre() + ": " + c1.getSalud()
-                    + " | " + c2.getNombre() + ": " + c2.getSalud());
         }
 
         Criatura ganador = c1.estaViva() ? c1 : c2;

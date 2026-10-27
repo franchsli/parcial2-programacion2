@@ -55,4 +55,8 @@ public abstract class Criatura {
         this.fuerza = fuerza;
     }
 
+    public void imprimirSalud(){
+        System.out.println("Salud de " + nombre + ": " + salud);
+    }
+
 }
