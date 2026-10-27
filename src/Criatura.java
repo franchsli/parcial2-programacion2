@@ -1,9 +1,7 @@
 public abstract class Criatura {
-    // protected ya que las clases hijas
-    // deberían tener acceso a ellos
-    protected String nombre;
-    protected int salud;
-    protected int fuerza;
+    private String nombre;
+    private int salud;
+    private int fuerza;
     
     public Criatura(String nombre, int salud, int fuerza) {
         this.nombre = nombre;
@@ -33,5 +31,28 @@ public abstract class Criatura {
         return salud > 0;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public int getSalud() {
+        return salud;
+    }
+
+    public void setSalud(int salud) {
+        this.salud = salud;
+    }
+
+    public int getFuerza() {
+        return fuerza;
+    }
+
+    public void setFuerza(int fuerza) {
+        this.fuerza = fuerza;
+    }
 
 }
